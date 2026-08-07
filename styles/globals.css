@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Desativa a seleção de texto e o cursor de texto ao clicar nos elementos do site */
+body {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Permite seleção apenas em campos de entrada/texto caso necessário */
+input, textarea {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+/* Micro efeito para compat com scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+.reveal-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
