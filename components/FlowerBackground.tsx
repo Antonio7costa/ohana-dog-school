@@ -25,7 +25,7 @@ function mulberry32(seed: number) {
 type Item = { src: string; style: CSSProperties; className: string };
 
 const EDGE_COUNT = 44; // flores nas laterais (todas as telas)
-const MID_COUNT = 34; // flores mais fracas no meio (a partir de sm)
+  const MID_COUNT = 50; // flores mais fracas no meio (a partir de sm)
 
 function generate(seed: number, strength: number): Item[] {
   const rand = mulberry32(seed * 104729 + 12345);
