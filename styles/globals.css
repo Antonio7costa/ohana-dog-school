@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+h1, h2, h3, h4 {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
 /* Desativa a seleção de texto e o cursor de texto ao clicar nos elementos do site */
 body {
   user-select: none;

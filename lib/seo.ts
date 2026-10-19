@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 
+// Troque pelo domínio real quando publicar (ou defina NEXT_PUBLIC_SITE_URL na hospedagem)
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://seusite.com";
+
 export const siteMetadata: Metadata = {
-  title: "Ohana SJDR | Escola, Hospedagem, Banho e Tosa",
+  title: "Ohana SJDR | Escola, Hospedagem, Banho e Tosa em São João del-Rei",
   description:
-    "Educação, socialização e rotina supervisionada para o seu melhor amigo. Agende uma avaliação e fale com um especialista no WhatsApp.",
-  metadataBase: new URL("https://seusite.com"), 
+    "Escola para cães, hospedagem especializada e banho e tosa em São João del-Rei. Educação, socialização e rotina supervisionada para o seu melhor amigo. Agende uma avaliação pelo WhatsApp.",
+  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
   },
@@ -12,15 +15,16 @@ export const siteMetadata: Metadata = {
     title: "Ohana SJDR | Agende no WhatsApp",
     description:
       "Treinamento com equipe especializada, ambiente seguro e atendimento humanizado.",
-    url: "https://seusite.com/",
+    url: "/",
     siteName: "Ohana SJDR",
+    locale: "pt_BR",
     type: "website",
     images: [
       {
-        url: "https://seusite.com/images/og-cover.jpg", 
+        url: "/images/og-cover.jpg",
         width: 1200,
         height: 630,
-        alt: "Cachorro feliz aprendendo com equipe especializada na Ohana SJDR",
+        alt: "Cães felizes na Ohana Dog School, em São João del-Rei",
       },
     ],
   },
@@ -29,8 +33,7 @@ export const siteMetadata: Metadata = {
     title: "Ohana SJDR | Agende no WhatsApp",
     description:
       "Educação, cuidado e amor para o seu melhor amigo. Fale conosco agora!",
-    creator: "@ohanasjdr",
-    images: ["https://seusite.com/images/og-cover.jpg"],
+    images: ["/images/og-cover.jpg"],
   },
   icons: {
     icon: "/favicon.ico",

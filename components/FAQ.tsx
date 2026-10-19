@@ -2,7 +2,7 @@
 
 import React, { useId, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, MessageCircle, MapPin } from "lucide-react";
+import { ChevronDown, MessageCircle } from "lucide-react";
 import { whatsappLink } from "../lib/whatsapp";
 
 type FaqItem = {
@@ -52,7 +52,7 @@ const faqItems: FaqItem[] = [
     answer: (
       <div className="space-y-3">
         <p><strong>Sim!</strong></p>
-        <p>Os cães idosos continuam possuindo as mesmas necessidades básicas de um cão jovem, como socialização, estímulos mentais, atividades físicas e interação com o ambiente. A diferença é que, muitas vezes, apresentam algumas limitações que precisam ser respepidas.</p>
+        <p>Os cães idosos continuam possuindo as mesmas necessidades básicas de um cão jovem, como socialização, estímulos mentais, atividades físicas e interação com o ambiente. A diferença é que, muitas vezes, apresentam algumas limitações que precisam ser respeitadas.</p>
         <p>Por isso, adaptamos a rotina individualmente para cada aluno, oferecendo atividades compatíveis com sua condição física e seu perfil.</p>
         <p>Manter-se ativo, estimulado e socialmente integrado contribui significativamente para a qualidade de vida e pode até aumentar a expectativa de vida dos cães idosos.</p>
       </div>
@@ -74,7 +74,7 @@ const faqItems: FaqItem[] = [
     answer: (
       <div className="space-y-4">
         <p>A saúde e a segurança de nossos alunos são prioridades na Ohana. Por isso, para frequentar a escola ou a hospedagem, os cães devem atender aos seguintes requisitos:</p>
-        
+
         <div>
           <p className="font-semibold text-slate-900 flex items-center gap-2"><span className="text-lg">💉</span> Vacinação em dia</p>
           <ul className="list-disc pl-8 mt-2 space-y-1 text-slate-700">
@@ -166,30 +166,30 @@ export default function FAQ() {
   }
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-slate-50 relative overflow-hidden">
-      <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
-        
+    <section id="faq" className="py-14 sm:py-24 relative scroll-mt-16">
+      <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
+
         {/* Cabeçalho */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-center mb-12"
+          transition={{ duration: 0.5, ease: "easeOut" as const }}
+          className="text-center mb-8 sm:mb-12"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white px-4 py-2 text-sm font-semibold text-primary mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white px-4 py-2 text-sm font-semibold text-primary mb-5 sm:mb-6 shadow-sm">
             <span>Dúvidas Comuns</span>
           </div>
           <h2 className="text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl">
             Perguntas Frequentes (FAQ)
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
+          <p className="mt-4 text-base sm:text-lg text-slate-600">
             Tudo o que você precisa saber sobre a nossa rotina, regras e cuidados antes de matricular o seu melhor amigo.
           </p>
         </motion.div>
 
         {/* Lista de Perguntas (Accordion) */}
-        <div className="grid gap-4">
+        <div className="grid gap-3 sm:gap-4">
           {faqItems.map((item, index) => {
             const isOpen = openIndex === index;
             const qId = `${baseId}-q-${index}`;
@@ -201,23 +201,23 @@ export default function FAQ() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                transition={{ duration: 0.4, delay: (index % 4) * 0.05 }}
                 className={`rounded-2xl border transition-all duration-300 ${
-                  isOpen 
-                    ? "bg-white border-primary/30 shadow-md" 
-                    : "bg-white/60 border-slate-200 hover:border-primary/30 hover:bg-white"
-                } px-5 py-4 sm:px-6 sm:py-5`}
+                  isOpen
+                    ? "bg-white border-primary/30 shadow-md"
+                    : "bg-white/90 border-slate-200 hover:border-primary/30 hover:bg-white"
+                } px-4 py-3.5 sm:px-6 sm:py-5`}
               >
                 <h3 className="m-0">
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between gap-4 text-left"
+                    className="flex w-full items-center justify-between gap-3 sm:gap-4 text-left"
                     aria-expanded={isOpen}
                     aria-controls={aId}
                     id={qId}
                     onClick={() => toggleIndex(index)}
                   >
-                    <span className={`text-base sm:text-lg font-bold transition-colors ${isOpen ? "text-primary" : "text-slate-900"}`}>
+                    <span className={`text-[15px] sm:text-lg font-bold leading-snug transition-colors ${isOpen ? "text-primary" : "text-slate-900"}`}>
                       {item.question}
                     </span>
 
@@ -259,20 +259,20 @@ export default function FAQ() {
         </div>
 
         {/* Rodapé do FAQ: Contato */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 bg-white rounded-[32px] p-8 sm:p-12 border border-slate-100 shadow-xl text-center relative overflow-hidden"
+          className="mt-10 sm:mt-16 bg-white rounded-[28px] sm:rounded-[32px] p-6 sm:p-12 border border-slate-100 shadow-xl text-center relative overflow-hidden"
         >
           {/* Fundo decorativo sutil */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
 
-          <h3 className="text-2xl font-extrabold text-slate-900 mb-2 relative z-10">
+          <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mb-2 relative z-10">
             Não encontrou sua dúvida?
           </h3>
-          <p className="text-slate-600 mb-8 relative z-10">
+          <p className="text-sm sm:text-base text-slate-600 mb-6 sm:mb-8 relative z-10">
             Nossa equipe terá prazer em ajudar e orientar você sobre a melhor opção para o seu cão.
           </p>
 
@@ -282,11 +282,11 @@ export default function FAQ() {
               href={whatsappLink}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-3 bg-primary text-white px-6 py-4 rounded-2xl font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all w-full sm:w-auto"
+              className="flex items-center justify-center gap-3 bg-primary text-white px-6 py-4 rounded-2xl font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all w-full sm:w-auto"
             >
-              <MessageCircle className="h-5 w-5" />
+              <MessageCircle className="h-5 w-5 shrink-0" />
               <div className="text-left">
-                <p className="text-[10px] uppercase tracking-wider text-primary-foreground/80 leading-none mb-1">São João del-Rei</p>
+                <p className="text-[10px] uppercase tracking-wider text-white/80 leading-none mb-1">São João del-Rei</p>
                 <p className="leading-none">(32) 99142-4044</p>
               </div>
             </a>
